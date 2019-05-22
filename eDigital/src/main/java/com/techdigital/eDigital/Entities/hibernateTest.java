@@ -13,11 +13,11 @@ public class hibernateTest {
 		entityManager.getTransaction().begin();
 
 		Address newAddress = new Address();
-		newAddress.setLine1("Something,");
-		newAddress.setLine2("Somewhere");
-		newAddress.setCity("Some Place");
-		newAddress.setState("Some Time");
-		newAddress.setZipcode(666);
+		newAddress.setLine1("Still,");
+		newAddress.setLine2("Working");
+		newAddress.setCity("Eat");
+		newAddress.setState("It");
+		newAddress.setZipcode(999);
 		entityManager.persist(newAddress);
 
 		entityManager.getTransaction().commit();
