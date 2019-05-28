@@ -1,6 +1,8 @@
 package com.techdigital.eDigital.Entities;
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement
 @Entity
 public class User {
 	@Id
