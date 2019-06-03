@@ -1,10 +1,10 @@
 package com.techdigital.Models.User;
 
-import com.techdigital.eDigital.TransferObjects.User;
+import com.techdigital.eDigital.Entities.UserEntity;
 
 public class UserCreator {
 	
-	public void create(User user)
+	public void create(UserEntity userE)
 	{
 		
 	}
