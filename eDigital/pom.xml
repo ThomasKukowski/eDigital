@@ -15,9 +15,9 @@
 	<packaging>war</packaging>
 	<version>0.0.3.RELEASE</version>
 
-	<name>iooo-spring-mvc-quickstart-archetype</name>
-	<description>iooo spring mvc quickstart archetype</description>
-	<url>https://www.iooo.tech</url>
+	<name>eDigitalBackend</name>
+	<description>This is the backend part of the eDigital web application</description>
+	<url>https://www.techdigitalcorp.com</url>
 
 	<properties>
 		<!-- project properties -->
