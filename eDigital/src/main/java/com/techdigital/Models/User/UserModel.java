@@ -1,7 +1,9 @@
 package com.techdigital.Models.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import com.techdigital.eDigital.Entities.*;
+import com.techdigital.eDigital.TransferObjects.User;
 
 //This class will be used to create a user in the database
 public class UserModel {
@@ -26,7 +28,7 @@ public class UserModel {
 		{
 			
 		}
-		return check;
+		return null;
 	}
 	public User authenticate(User userAuth)
 	{

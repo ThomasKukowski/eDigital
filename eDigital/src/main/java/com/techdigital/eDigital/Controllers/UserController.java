@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.ws.rs.core.MediaType;
 
 import com.techdigital.Models.*;
 import com.techdigital.Models.User.UserModel;
 import com.techdigital.eDigital.Entities.*;
+import com.techdigital.eDigital.TransferObjects.User;
+
 
 @RestController
 @RequestMapping(value = "/username/api/v1/", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
