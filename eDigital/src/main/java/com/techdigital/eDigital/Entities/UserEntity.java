@@ -1,8 +1,10 @@
 package com.techdigital.eDigital.Entities;
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement
 @Entity
-public class User {
+public class UserEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int userId;
@@ -13,7 +15,7 @@ public class User {
 	private String email;
 	@ManyToOne
     @JoinColumn(name = "addressId")
-	private Address addressId;
+	private AddressEntity addressId;
 	/**
 	 * @param userId the userId to set
 	 */
@@ -92,13 +94,13 @@ public class User {
 	 * @return the addressId
 	 */
 
-	public Address getAddressId() {
+	public AddressEntity getAddressId() {
 		return addressId;
 	}
 	/**
 	 * @param addressId the addressId to set
 	 */
-	public void setAddressId(Address addressId) {
+	public void setAddressId(AddressEntity addressId) {
 		this.addressId = addressId;
 	}
 }

@@ -2,7 +2,7 @@ package com.techdigital.eDigital.Entities;
 import javax.persistence.*;
 
 @Entity
-public class Address {
+public class AddressEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int addressId;
