@@ -12,7 +12,7 @@ public class hibernateTest {
 
 		entityManager.getTransaction().begin();
 
-		Address newAddress = new Address();
+		AddressEntity newAddress = new AddressEntity();
 		newAddress.setLine1("Something,");
 		newAddress.setLine2("Somewhere");
 		newAddress.setCity("Some Place");
