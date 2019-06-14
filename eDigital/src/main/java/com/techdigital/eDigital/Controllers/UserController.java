@@ -36,8 +36,15 @@ public class UserController {
 	}
 	
 	@PostMapping("user")
-	public User createUser(@RequestBody User usr) {
-		//user.store(usr);
+	public User registerUser(@RequestBody User usr) {
+		//TODO Validator first
+		
+		//Transform into entity
+		
+		//Persist to database
+		
+		//return response
+		
 		return usr;
 	}
 	
