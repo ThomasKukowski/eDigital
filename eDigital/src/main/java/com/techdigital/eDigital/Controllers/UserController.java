@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.ws.rs.core.MediaType;
 
-import com.techdigital.Models.*;
+import com.techdigital.eDigital.Validators.UserValidator;
 import com.techdigital.Models.User.UserModel;
 import com.techdigital.eDigital.Entities.*;
-import com.techdigital.eDigital.TransferObjects.User;
+import com.techdigital.eDigital.TransferObjects.CreateUserTransferObject;
+import com.techdigital.eDigital.TransferObjects.RegisterUserResponse;
 
 
 @RestController
@@ -25,31 +26,33 @@ import com.techdigital.eDigital.TransferObjects.User;
 public class UserController {
 
 	@Autowired
-	private User user;
+	private CreateUserTransferObject user;
 	@Autowired
 	private UserModel userModel;
 	
 	@PostMapping("authenticate")
-	public User authenticateUser(@RequestBody User usr) {
+	public CreateUserTransferObject authenticateUser(@RequestBody CreateUserTransferObject usr) {
 		userModel.authenticate(usr);
 		return usr;
 	}
 	
 	@PostMapping("user")
-	public User registerUser(@RequestBody User usr) {
+	public RegisterUserResponse registerUser(@RequestBody CreateUserTransferObject usr) {
+		RegisterUserResponse response = new RegisterUserResponse();
+		
 		//TODO Validator first
 		
-		//Transform into entity
-		
-		//Persist to database
+		//model
+			//Persist to database
+				//transform
 		
 		//return response
 		
-		return usr;
+		return response;
 	}
 	
 	@GetMapping("user")
-	public User getUser(User u){
+	public CreateUserTransferObject getUser(CreateUserTransferObject u){
 		return u;
 	}
 	
