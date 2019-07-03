@@ -42,12 +42,18 @@ public class UserController {
 		
 		//TODO Validator first
 		
-		//model
-			//Persist to database
-				//transform
+		UserValidator validator = new UserValidator();
+		response.errors = validator.validate(usr);
+		
+		if(response.errors == null)
+		{
+			//model
+				//Persist to database
+					//transform
+		}
+		
 		
 		//return response
-		
 		return response;
 	}
 	
