@@ -14,35 +14,64 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.ws.rs.core.MediaType;
 
-import com.techdigital.Models.*;
+import com.techdigital.eDigital.Validators.UserValidator;
 import com.techdigital.Models.User.UserModel;
 import com.techdigital.eDigital.Entities.*;
-import com.techdigital.eDigital.TransferObjects.User;
+import com.techdigital.eDigital.TransferObjects.CreateUserTransferObject;
+import com.techdigital.eDigital.TransferObjects.RegisterUserResponse;
+import com.techdigital.eDigital.Transformers.UserTransformer;
 
 
 @RestController
 @RequestMapping(value = "/username/api/v1/", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
-public class UserController {
+public class UserController 
+{
 
 	@Autowired
-	private User user;
+	private CreateUserTransferObject user;
 	@Autowired
 	private UserModel userModel;
 	
 	@PostMapping("authenticate")
-	public User authenticateUser(@RequestBody User usr) {
+	public CreateUserTransferObject authenticateUser(@RequestBody CreateUserTransferObject usr) 
+	{
 		userModel.authenticate(usr);
 		return usr;
 	}
 	
 	@PostMapping("user")
-	public User createUser(@RequestBody User usr) {
-		//user.store(usr);
-		return usr;
+	public RegisterUserResponse registerUser(@RequestBody CreateUserTransferObject usr) 
+	{
+		RegisterUserResponse response = new RegisterUserResponse();
+		
+		//TODO Validator first
+		
+		UserValidator validator = new UserValidator();
+		response.errors = validator.validate(usr);
+		
+		if(response.errors == null)
+		{
+			//objects for persist process
+			UserEntity usrEntity = new UserEntity();
+			UserTransformer userTrans = new UserTransformer();
+			UserModel userModel = new UserModel();
+			
+			//transform transfer object into entity
+			usrEntity = userTrans.transform(usr);
+			userModel.createUser(usrEntity);
+			
+			//persist to database
+			userModel.createUser(usrEntity);
+				
+		}
+		
+		
+		//return response
+		return response;
 	}
 	
 	@GetMapping("user")
-	public User getUser(User u){
+	public CreateUserTransferObject getUser(CreateUserTransferObject u){
 		return u;
 	}
 	

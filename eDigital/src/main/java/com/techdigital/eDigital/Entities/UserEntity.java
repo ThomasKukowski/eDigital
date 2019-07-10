@@ -15,7 +15,7 @@ public class UserEntity {
 	private String email;
 	@ManyToOne
     @JoinColumn(name = "addressId")
-	private AddressEntity addressId;
+	private AddressEntity address;
 	/**
 	 * @param userId the userId to set
 	 */
@@ -94,13 +94,13 @@ public class UserEntity {
 	 * @return the addressId
 	 */
 
-	public AddressEntity getAddressId() {
-		return addressId;
+	public AddressEntity getAddress() {
+		return address;
 	}
 	/**
 	 * @param addressId the addressId to set
 	 */
-	public void setAddressId(AddressEntity addressId) {
-		this.addressId = addressId;
+	public void setAddress(AddressEntity address) {
+		this.address = address;
 	}
 }
