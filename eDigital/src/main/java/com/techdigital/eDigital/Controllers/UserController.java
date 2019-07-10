@@ -19,11 +19,13 @@ import com.techdigital.Models.User.UserModel;
 import com.techdigital.eDigital.Entities.*;
 import com.techdigital.eDigital.TransferObjects.CreateUserTransferObject;
 import com.techdigital.eDigital.TransferObjects.RegisterUserResponse;
+import com.techdigital.eDigital.Transformers.UserTransformer;
 
 
 @RestController
 @RequestMapping(value = "/username/api/v1/", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
-public class UserController {
+public class UserController 
+{
 
 	@Autowired
 	private CreateUserTransferObject user;
@@ -31,13 +33,15 @@ public class UserController {
 	private UserModel userModel;
 	
 	@PostMapping("authenticate")
-	public CreateUserTransferObject authenticateUser(@RequestBody CreateUserTransferObject usr) {
+	public CreateUserTransferObject authenticateUser(@RequestBody CreateUserTransferObject usr) 
+	{
 		userModel.authenticate(usr);
 		return usr;
 	}
 	
 	@PostMapping("user")
-	public RegisterUserResponse registerUser(@RequestBody CreateUserTransferObject usr) {
+	public RegisterUserResponse registerUser(@RequestBody CreateUserTransferObject usr) 
+	{
 		RegisterUserResponse response = new RegisterUserResponse();
 		
 		//TODO Validator first
@@ -47,9 +51,18 @@ public class UserController {
 		
 		if(response.errors == null)
 		{
-			//model
-				//Persist to database
-					//transform
+			//objects for persist process
+			UserEntity usrEntity = new UserEntity();
+			UserTransformer userTrans = new UserTransformer();
+			UserModel userModel = new UserModel();
+			
+			//transform transfer object into entity
+			usrEntity = userTrans.transform(usr);
+			userModel.createUser(usrEntity);
+			
+			//persist to database
+			userModel.createUser(usrEntity);
+				
 		}
 		
 		
